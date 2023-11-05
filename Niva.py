@@ -1,30 +1,30 @@
-import pyttsx3                                     # pip install pyttsx3
+import pyttsx3                                    
 import datetime
-import speech_recognition as sr                    # pip install SpeechRecognition
-import pyaudio                                   # pip install pipwin and then pipwin install pyaudio
-import wikipedia                                   # pip install wikipedia
+import speech_recognition as sr                   
+import pyaudio                                  
+import wikipedia                                  
 import webbrowser
 import os
 import sys
 import smtplib
 from email.message import EmailMessage
-import pywhatkit                                   # pip install pywhatkit
+import pywhatkit                                   
 import MyAlarm      
 import ecapture as ec                
-import pyjokes                                     # pip install pyjokes
-from speedtest import Speedtest                    # pip install speedtest-cli
-from pywikihow import search_wikihow               # pip install pywikihow
-import pyautogui                                   # pip install pyAutoGUI
-import poetpy                                      # pip install poetpy
+import pyjokes                                     
+from speedtest import Speedtest                    
+from pywikihow import search_wikihow               
+import pyautogui                                   
+import poetpy                                      
 import random
-from forex_python.converter import CurrencyRates   # pip install forex-python
-import requests                                    # pip install requests
-import bs4                                         # pip install beautifulsoup4
+from forex_python.converter import CurrencyRates   
+import requests                                    
+import bs4                                        
 import time
-import wolframalpha                                # pip install wolframalpha
-from quote import quote                            # pip install quote
-import winshell as winshell                        # pip install winshell
-from geopy.geocoders import Nominatim              # pip install geopy  and pip install geocoder
+import wolframalpha                                
+from quote import quote                            
+import winshell as winshell                        
+from geopy.geocoders import Nominatim             
 from geopy import distance
 import turtle
 import random
