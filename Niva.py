@@ -447,7 +447,7 @@ if __name__ == '__main__':
             fun_talk(f"Author: {quotes[quote_no]['author']}")
             fun_talk(f"He said {quotes[quote_no]['quote']}")
 
-        elif 'what' in query or 'who' in query:  # or 'where' in query:  
+        elif 'what' in query or 'who' in query:    
             
             client = wolframalpha.Client("JUGV8R-RXJ4RP7HAG")
             res = client.query(query)
