@@ -38,20 +38,20 @@ voices = engine.getProperty("voices")
 
 engine.setProperty('voice',voices[1].id)
 
-def fun_talk(audio):
+def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
 def wish_user():
     hour = int(datetime.datetime.now().hour)
     if hour >= 0 and hour < 12:
-        fun_talk("Good Morning !")
+        speak("Good Morning !")
     elif hour >= 12 and hour < 18:
-        fun_talk("Good Afternoon !")
+        speak("Good Afternoon !")
     else:
-        fun_talk("Good Evening !")
+        speak("Good Evening !")
         
-    fun_talk("I am Niva (Python Voice Assistant). Tell me how may I help you.")
+    speak("I am Niva (Python Voice Assistant). Tell me how may I help you.")
 
 
 def get_command():
@@ -87,17 +87,17 @@ if __name__ == '__main__':
         home_user_dir = os.path.expanduser("~")
 
         if 'wikipedia' in query:
-            fun_talk('Searching Wikipedia')
+            speak('Searching Wikipedia')
             query = query.replace("wikipedia", "")
             results = wikipedia.summary(query, sentences=3)
-            fun_talk("According to Wikipedia")
+            speak("According to Wikipedia")
             print(results)
-            fun_talk(results)
+            speak(results)
 
         elif ('images' or 'image') in query:
-            fun_talk("Please provide the desired keywords to search related Images")
+            speak("Please provide the desired keywords to search related Images")
             txt=get_command()
-            fun_talk("Providing Images of"+txt)
+            speak("Providing Images of"+txt)
             response=requests.get("https://source.unsplash.com/random?{0}".format(txt))
             file=open('sample_image.jpg','wb')
             file.write(response.content)
@@ -119,12 +119,12 @@ if __name__ == '__main__':
 
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
-            fun_talk(f"The time is {strTime}")
+            speak(f"The time is {strTime}")
 
         elif 'the date' in query:
             strDate = datetime.datetime.today().strftime('%Y-%m-%d')
             print(strDate)
-            fun_talk(f"The date is {strDate}")
+            speak(f"The date is {strDate}")
 
         elif 'open visual studio code' in query:
             os.startfile(home_user_dir + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\"
@@ -146,29 +146,29 @@ if __name__ == '__main__':
 
 
         elif ('hu r u' or 'are you' ) in query:
-            fun_talk("I am Niva (Python Voice Assistant), developed by Augnik Banerjee and I seek to improve more day by day! ")
+            speak("I am Niva (Python Voice Assistant), developed by Augnik Banerjee and I seek to improve more day by day! ")
         elif 'what you want to do' in query:
-            fun_talk("I want to help lazy people complete their work")
+            speak("I want to help lazy people complete their work")
 
         elif 'alexa' in query:
-            fun_talk("I don't know Alexa, but I've heard of Alexa. If you have Alexa, "
+            speak("I don't know Alexa, but I've heard of Alexa. If you have Alexa, "
                         "I may have just triggered Alexa. If so, sorry Alexa.")
 
         elif 'google assistant' in query:
-            fun_talk("He was my classmate, too intelligent guy. We both are best friends.")
+            speak("He was my classmate, too intelligent guy. We both are best friends.")
 
         elif 'siri' in query:
-            fun_talk("Siri, She's a competing virtual assistant on   a competitor's phone. "
+            speak("Siri, She's a competing virtual assistant on   a competitor's phone. "
                         "Not that I'm competitive or anything.")
 
         elif 'cortana' in query:
-            fun_talk("I thought you'd never ask. So I've never thought about it.")
+            speak("I thought you'd never ask. So I've never thought about it.")
 
         elif 'niva' in query:
-            fun_talk("Are you joking. You're coming in loud and clear.")
+            speak("Are you joking. You're coming in loud and clear.")
 
         elif 'what language you use' in query:
-            fun_talk("I am written in Python and I generally speak english.")
+            speak("I am written in Python and I generally speak english.")
 
         elif 'send email' in query:
 
@@ -195,20 +195,20 @@ if __name__ == '__main__':
 
 
             def get_mail_info():
-                fun_talk('To whom you want to send email')
+                speak('To whom you want to send email')
                 name = get_command()
                 receiver = email_list[name]
                 print(receiver)
-                fun_talk('What is the subject of your email?')
+                speak('What is the subject of your email?')
                 subject = get_command()
-                fun_talk('Tell me the text in your email')
+                speak('Tell me the text in your email')
                 message = get_command()
 
                 send_mail(receiver, subject, message)
 
-                fun_talk('Hey lazy person. Your email is sent Successfully.')
+                speak('Hey lazy person. Your email is sent Successfully.')
 
-                fun_talk('Do you want to send more email?')
+                speak('Do you want to send more email?')
                 send_more = get_command()
                 if 'yes' in send_more:
                     get_mail_info()
@@ -218,7 +218,7 @@ if __name__ == '__main__':
 
         elif 'play' in query:
             cmd_info = query.replace('play', '')
-            fun_talk(f'Playing {cmd_info} ')
+            speak(f'Playing {cmd_info} ')
             print(cmd_info)
             pywhatkit.playonyt(cmd_info)
 
@@ -227,11 +227,11 @@ if __name__ == '__main__':
             pywhatkit.search(query)
         
         elif 'local disk c' in query:
-            fun_talk("opening local disk C")
+            speak("opening local disk C")
             webbrowser.open("C://")
 
         elif 'set alarm' in query:
-            fun_talk("Tell me the time to set an Alarm. For example, set an alarm for 11:21 AM")
+            speak("Tell me the time to set an Alarm. For example, set an alarm for 11:21 AM")
             a_info = get_command()
             a_info = a_info.replace('set an alarm for', '')
             a_info = a_info.replace('.', '')
@@ -239,7 +239,7 @@ if __name__ == '__main__':
             MyAlarm.alarm(a_info)
 
         elif 'exit' in query:
-            fun_talk("Exiting ...")
+            speak("Exiting ...")
             sys.exit()
 
         elif 'close command prompt' in query:
@@ -272,7 +272,7 @@ if __name__ == '__main__':
             webbrowser.open(query)
 
         elif 'poem' in query:
-            fun_talk('Poem of which author you want to listen?')
+            speak('Poem of which author you want to listen?')
             auth = get_command()
             poem = poetpy.get_poetry('author', auth, 'title,linecount') 
             poems = poetpy.get_poetry('author', auth, 'lines')  
@@ -281,12 +281,12 @@ if __name__ == '__main__':
             # print(poem_len)
             poem_no = random.randint(1, poem_len)
             print("Title- ", poem[poem_no]['title'])
-            fun_talk(f"Title- {poem[poem_no]['title']}")
+            speak(f"Title- {poem[poem_no]['title']}")
             print("No. of lines-", poem[poem_no]['linecount'])
-            fun_talk(f"No. of lines- {poem[poem_no]['linecount']}")
+            speak(f"No. of lines- {poem[poem_no]['linecount']}")
             poem_str = '\n'
             print("Poem-\n", poem_str.join(poems[poem_no]['lines']))
-            fun_talk(f"Poem-\n {poem_str.join(poems[poem_no]['lines'])}")
+            speak(f"Poem-\n {poem_str.join(poems[poem_no]['lines'])}")
 
         elif 'resume' in query or 'pause' in query:
             pyautogui.press("playpause")
@@ -308,13 +308,13 @@ if __name__ == '__main__':
 
                 cur = CurrencyRates()
                 # print(cur.get_rate('USD', 'INR'))
-                fun_talk('From which currency u want to convert?')
+                speak('From which currency u want to convert?')
                 from_cur = get_command()
                 src_cur = curr_list[from_cur.lower()]
-                fun_talk('To which currency u want to convert?')
+                speak('To which currency u want to convert?')
                 to_cur = get_command()
                 dest_cur = curr_list[to_cur.lower()]
-                fun_talk('Tell me the value of currency u want to convert.')
+                speak('Tell me the value of currency u want to convert.')
                 val_cur = float(get_command())
                 # print(val_cur)
                 print(cur.convert(src_cur, dest_cur, val_cur))
@@ -323,7 +323,7 @@ if __name__ == '__main__':
                 print("Couldn't get what you have said, Can you say it again??")
 
         elif 'covid-19' in query or 'corona' in query:
-            fun_talk('For which region you want to see the Covid-19 cases. '
+            speak('For which region you want to see the Covid-19 cases. '
                         'Overall cases in the world or any specific country?')
             c_query = get_command()
             if 'overall' in c_query or 'over all' in c_query or 'world' in c_query or 'total' in c_query or 'worldwide' in c_query:
@@ -336,13 +336,13 @@ if __name__ == '__main__':
                         new_info = info2.findAll('div', id='maincounter-wrap')
                         # print(new_info)
                         print('Worldwide Covid-19 information--')
-                        fun_talk('Worldwide Covid-19 information--')
+                        speak('Worldwide Covid-19 information--')
 
                         for i in new_info:
                             head = i.find('h1', class_=None).get_text()
                             counting = i.find('span', class_=None).get_text()
                             print(head, "", counting)
-                            fun_talk(f'{head}: {counting}')
+                            speak(f'{head}: {counting}')
 
                     except Exception as e:
                         pass
@@ -353,7 +353,7 @@ if __name__ == '__main__':
             elif 'country' in c_query or 'specific country' in c_query:
                 def country_cases():
                     try:
-                        fun_talk('Tell me the country name.')
+                        speak('Tell me the country name.')
                         c_name = get_command()
                         c_url = f'https://www.worldometers.info/coronavirus/country/{c_name}/'
                         data_html = requests.get(c_url)
@@ -361,13 +361,13 @@ if __name__ == '__main__':
                         new_data = c_data.find('div', class_='content-inner').findAll('div', id='maincounter-wrap')
                         # print(new_data)
                         print(f'Covid-19 information for {c_name}--')
-                        fun_talk(f'Covid-19 information for {c_name}')
+                        speak(f'Covid-19 information for {c_name}')
 
                         for j in new_data:
                             c_head = j.find('h1', class_=None).get_text()
                             c_counting = j.find('span', class_=None).get_text()
                             print(c_head, "", c_counting)
-                            fun_talk(f'{c_head}: {c_counting}')
+                            speak(f'{c_head}: {c_counting}')
 
                     except Exception as e:
                         pass
@@ -377,7 +377,7 @@ if __name__ == '__main__':
 
         elif 'weather' in query or 'temperature' in query:
             try:
-                fun_talk("Tell me the city name.")
+                speak("Tell me the city name.")
                 city = get_command()
                 api = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=eea37893e6d01d234eca31616e48c631"
                 w_data = requests.get(api).json()
@@ -397,12 +397,12 @@ if __name__ == '__main__':
                             f"Pressure: {str(pressure)} millibar \nHumidity: {str(humidity)}% \n\n" \
                             f"Visibility: {str(visibility)} metres \nWind: {str(wind)} km/hr \nSunrise: {sunrise}  " \
                             f"\nSunset: {sunset}"
-                fun_talk(f"Gathering the weather information of {city}...")
+                speak(f"Gathering the weather information of {city}...")
                 print(f"Gathering the weather information of {city}...")
                 print(all_data1)
-                fun_talk(all_data1)
+                speak(all_data1)
                 print(all_data2)
-                fun_talk(all_data2)
+                speak(all_data2)
 
             except Exception as e:
                 pass
@@ -410,14 +410,14 @@ if __name__ == '__main__':
         elif 'month' in query or 'month is going' in query:
             def tell_month():
                 month = datetime.datetime.now().strftime("%B")
-                fun_talk(month)
+                speak(month)
 
             tell_month()
 
         elif 'day' in query or 'day today' in query:
             def tell_day():
                 day = datetime.datetime.now().strftime("%A")
-                fun_talk(day)
+                speak(day)
 
             tell_day()
 
@@ -430,13 +430,13 @@ if __name__ == '__main__':
                 res = client.query(' '.join(query))
                 answer = next(res.results).text
                 print("The answer is " + answer)
-                fun_talk("The answer is " + answer)
+                speak("The answer is " + answer)
 
             except Exception as e:
                 print("Couldn't get what you have said, Can you say it again??")
 
         elif 'quote' in query or 'quotes' in query:
-            fun_talk("Tell me the author or person name.")
+            speak("Tell me the author or person name.")
             q_author = get_command()
             quotes = quote(q_author)
             quote_no = random.randint(1, len(quotes))
@@ -444,8 +444,8 @@ if __name__ == '__main__':
             # print(quotes)
             print("Author: ", quotes[quote_no]['author'])
             print("-->", quotes[quote_no]['quote'])
-            fun_talk(f"Author: {quotes[quote_no]['author']}")
-            fun_talk(f"He said {quotes[quote_no]['quote']}")
+            speak(f"Author: {quotes[quote_no]['author']}")
+            speak(f"He said {quotes[quote_no]['quote']}")
 
         elif 'what' in query or 'who' in query:    
             
@@ -453,7 +453,7 @@ if __name__ == '__main__':
             res = client.query(query)
             try:
                 print(next(res.results).text)
-                fun_talk(next(res.results).text)
+                speak(next(res.results).text)
 
             except StopIteration:
                 print("No results found!!")
@@ -462,42 +462,42 @@ if __name__ == '__main__':
             try:
                 winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=True)
                 print("Recycle Bin is cleaned successfully.")
-                fun_talk("Recycle Bin is cleaned successfully.")
+                speak("Recycle Bin is cleaned successfully.")
 
             except Exception as e:
                 print("Recycle bin is already Empty.")
-                fun_talk("Recycle bin is already Empty.")
+                speak("Recycle bin is already Empty.")
 
         elif 'write a note' in query or 'make a note' in query:
-            fun_talk("What should I write, sir??")
+            speak("What should I write, sir??")
             note = get_command()
             file = open('Notes.txt', 'a')
-            fun_talk("Should I include the date and time??")
+            speak("Should I include the date and time??")
             n_conf = get_command()
             if 'yes' in n_conf:
                 str_time = datetime.datetime.now().strftime("%H:%M:%S")
                 file.write(str_time)
                 file.write(" --> ")
                 file.write(note)
-                fun_talk("Point noted successfully.")
+                speak("Point noted successfully.")
             else:
                 file.write("\n")
                 file.write(note)
-                fun_talk("Point noted successfully.")
+                speak("Point noted successfully.")
 
         elif 'show me the notes' in query or 'read notes' in query:
-            fun_talk("Reading Notes")
+            speak("Reading Notes")
             file = open("Notes.txt", "r")
             data_note = file.readlines()
             # for points in data_note:
             print(data_note)
-            fun_talk(data_note)
+            speak(data_note)
 
         elif 'distance' in query:
             geocoder = Nominatim(user_agent="Singh")
-            fun_talk("Tell me the first city name??")
+            speak("Tell me the first city name??")
             location1 = get_command()
-            fun_talk("Tell me the second city name??")
+            speak("Tell me the second city name??")
             location2 = get_command()
 
             coordinates1 = geocoder.geocode(location1)
@@ -512,13 +512,13 @@ if __name__ == '__main__':
             distance_places = distance.distance(place1, place2)
 
             print(f"The distance between {location1} and {location2} is {distance_places}.")
-            fun_talk(f"The distance between {location1} and {location2} is {distance_places}")
+            speak(f"The distance between {location1} and {location2} is {distance_places}")
 
         elif 'screenshot' in query:
             sc = pyautogui.screenshot()
             sc.save('pa_ss.png')
             print("Screenshot taken successfully.")
-            fun_talk("Screenshot taken successfully.")
+            speak("Screenshot taken successfully.")
 
         elif 'volume up' in query:
             pyautogui.press("volumeup")
@@ -531,7 +531,7 @@ if __name__ == '__main__':
 
         elif 'shut down' in query:
             print("Do you want to shutdown you system?")
-            fun_talk("Do you want to shutdown you system?")
+            speak("Do you want to shutdown you system?")
             cmd = get_command()
             if 'no' in cmd:
                 continue
@@ -541,7 +541,7 @@ if __name__ == '__main__':
 
         elif 'restart' in query:
             print("Do you want to restart your system?")
-            fun_talk("Do you want to restart your system?")
+            speak("Do you want to restart your system?")
             cmd = get_command()
             if 'no' in cmd:
                 continue
@@ -551,7 +551,7 @@ if __name__ == '__main__':
 
         elif 'log out' in query:
             print("Do you want to logout from your system?")
-            fun_talk("Do you want to logout from your system?")
+            speak("Do you want to logout from your system?")
             cmd = get_command()
             if 'no' in cmd:
                 continue
@@ -561,20 +561,20 @@ if __name__ == '__main__':
         elif 'joke' in query:
             joke = pyjokes.get_joke()
             print(joke)
-            fun_talk(joke)
+            speak(joke)
 
         elif 'internet speed' in query:
             st = Speedtest()
             print("Wait!! I am checking your Internet Speed...")
-            fun_talk("Wait!! I am checking your Internet Speed...")
+            speak("Wait!! I am checking your Internet Speed...")
             dw_speed = st.download()
             up_speed = st.upload()
             dw_speed = dw_speed / 1000000
             up_speed = up_speed / 1000000
             print('Your download speed is', round(dw_speed, 3), 'Mbps')
             print('Your upload speed is', round(up_speed, 3), 'Mbps')
-            fun_talk(f'Your download speed is {round(dw_speed, 3)} Mbps')
-            fun_talk(f'Your upload speed is {round(up_speed, 3)} Mbps')
+            speak(f'Your download speed is {round(dw_speed, 3)} Mbps')
+            speak(f'Your upload speed is {round(up_speed, 3)} Mbps')
 
 
         elif 'how to' in query:
@@ -584,9 +584,9 @@ if __name__ == '__main__':
                 data = search_wikihow(query, max_results)
                 # assert len(data) == 1
                 data[0].print()
-                fun_talk(data[0].summary)
+                speak(data[0].summary)
             except Exception as e:
-                fun_talk('Sorry, I am unable to find the answer for your query.')
+                speak('Sorry, I am unable to find the answer for your query.')
                         
         elif 'news' in query or 'news headlines' in query:
             url = "https://news.google.com/news/rss"
@@ -595,13 +595,13 @@ if __name__ == '__main__':
             client.close()
             page = bs4.BeautifulSoup(xml_page, 'xml')
             news_list = page.findAll("item")
-            fun_talk("Today's top headlines are--")
+            speak("Today's top headlines are--")
             try:
                 for news in news_list:
                     print(news.title.text)
                     # print(news.pubDate.text)
-                    fun_talk(f"{news.title.text}")
-                    # fun_talk(f"{news.pubDate.text}")
+                    speak(f"{news.title.text}")
+                    # speak(f"{news.pubDate.text}")
                     print()
 
             except Exception as e:
@@ -610,7 +610,7 @@ if __name__ == '__main__':
         elif 'snake game' in query:
             try:
                 print("Starting the game!")
-                fun_talk("Starting the game!")
+                speak("Starting the game!")
                 snake_game.game()
             except Exception as e:
                 pass
