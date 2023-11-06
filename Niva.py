@@ -240,7 +240,7 @@ if __name__ == '__main__':
             a_info = a_info.upper()
             MyAlarm.alarm(a_info)
 
-        elif 'exit' in query:
+        elif ('exit' or 'bye') in query:
             speak("Exiting ...")
             sys.exit()
 
