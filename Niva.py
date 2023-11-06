@@ -144,7 +144,9 @@ if __name__ == '__main__':
         elif 'open spotify' in query:
             webbrowser.open("spotify.com")
 
-
+         elif 'phase' in query:
+            speak("Right now I am in my first phase or initial phase, by the end of 2026 I'll get a new voice ! ")
+        
         elif ('hu r u' or 'are you' ) in query:
             speak("I am Niva (Python Voice Assistant), developed by Augnik Banerjee and I seek to improve more day by day! ")
         elif 'what you want to do' in query:
